@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./favicon.ico">
+  <title>QQ音乐-千万正版音乐海量无损曲库新歌热歌天天畅听的高品质音乐平台！</title>
+  <link rel="stylesheet" href="./reset.css">
+  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="./swiper-bundle.min.css">
+  <!-- Demo styles -->
+  <style>
+    a {
+      cursor: pointer;
+    }
+    a:hover {
+      color: #31c27c;
+    }
+    html,
+    body {
+      position: relative;
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper {
+      width: 100%;
+      height: 68%;
+    }
+
+    .swiper-slide {
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 76%;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .swiper {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      background: rgba(0, 0, 0, .05);
+      width: 80px;
+      height: 115px;
+      top: 26%;
+      display: flex;
+      transition: all 0.5s ease;
+    }
+    .swiper-button-next {
+      right: -80px;
+    }
+    .swiper-button-next:hover {
+      background: rgba(0, 0, 0, .1);
+    }
+    .swiper-button-prev {
+      left: -80px;
+    }
+    .swiper-button-prev:hover {
+      background: rgba(0, 0, 0, .1);
+    }
+    .container1:hover .swiper-button-next {
+      right: 0;
+    }
+    .container1:hover .swiper-button-prev {
+      left: 0;
+    }
+
+    .container2 img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-pagination {
+      bottom: -5%;
+    }
+
+    .swiper-button-next::after {
+      color: #000;
+    }
+
+    .swiper-button-prev::after {
+      color: #000;
+    }
+    .swiper-pagination-bullet-active {
+      background-color: rgb(175, 175, 175);
+    }
+    .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+      background-color: rgb(0, 0, 0, .3);
+      margin:0 var(--swiper-pagination-bullet-horizontal-gap,16px);
+    }
+    .container1 .photo li>a {
+      display: block;
+      width: 224px;
+      height: 224px;
+      position: relative;
+      overflow: hidden;
+    }
+    .container1 .photo li .cover_play {
+      width: 49px;
+      height: 49px;
+      position: absolute;
+      left: 35%;
+      top: 35%;
+      background-image: url(./cover_play@2x.53a26efb.png);
+      background-size: cover;
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+    .container1 .photo li img {
+      transition: all 0.5s ease;
+    }
+    .container1 .photo li>a:hover img{
+      filter: brightness(70%);
+    }
+    .container2 .newsongs-image li img {
+      transition: all 0.5s ease;
+    }
+    .container2 .newsongs-image li>a:hover img{
+      filter: brightness(70%);
+    }
+    .container2 .newsongs-image li>a {
+      display: block;
+      width: 86px;
+      height: 86px;
+      position: relative;
+      overflow: hidden;
+    }
+    .container2 .newsongs-image li .cover_play_2 {
+      width: 32.67px;
+      height: 32.67px;
+      position: absolute;
+      left: 20%;
+      top: 20%;
+      background-image: url(./cover_play@2x.53a26efb.png);
+      background-size: cover;
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+    .header .search_1 {
+      left: 784px;
+      top: -61px;
+      width: 169px;
+      height: 36px;
+      background-color: aqua;
+      position: relative;
+    }
+    .header .search_1 .search_3 {
+      width: 213px;
+      height: 0;
+      position: absolute;
+      background-color: #fff;
+      z-index: 50;
+      left: 0;
+      top: 36px;
+      transition: height 0.3s ease ;
+      overflow: hidden;
+    }
+    .header .search_1 .search_3 ul a {
+      width: 90%;
+      height: 36px;
+      line-height: 36px;
+      padding: 0 11px;
+      font-size: 14px;
+    }
+    .header .search_1 .search_3 ul a:hover {
+      background-color: #31c27c;
+      color: #fff;
+    }
+    .header .search_1 .search_3 ul a li {
+      float: left;
+    }
+    .header .search_1 .search_3 ul a li:first-child {
+      color: #ff4222;
+      margin-right: 10px;
+    }
+    .header .search_1 .search_3 ul a:hover li:first-child {
+      color: #fff;
+    }
+    .header .search_1 .search_3 ul a span {
+      float: right;
+    }
+    .header .search_1 .search_3 .search_history {
+      height: 36px;
+      line-height: 36px;
+      margin-top: 15px;
+    }
+    .header .search_1 .search_3 .search_history .search_history_left {
+      margin-left: 11px;
+      color: #999;
+      font-size: 14px;
+    }
+    .header .search_1 .search_3 .search_history .search_history_right {
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 36px;  
+    }
+    .header .search_1 .search_3 .search_history .search_history_right:hover i {
+      background-position: -20px -60px;
+    }
+    .header .search_1 .search_3 .search_history .search_history_right i {
+      display: block;
+      width: 16px;
+      height: 16px;
+      background-image: url(./icon_sprite@2x.bf4cef49\(1\).png);
+      background-position: -100px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header clearfix">
+    <div class="header-logo leftfix"><img src="./logo.png" alt="QQ音乐"></div>
+    <ul class="header-left">
+      <li title="音乐馆"><a href="./">音乐馆</a></li>
+      <li title="我的音乐"><a href="./">我的音乐</a></li>
+      <li title="客户端"><a href="./">客户端<img class="qiangtequan" src="./mark_1.png" alt="抢特权" width="38px" height="13px"></a>
+        <i class="kehuduan-nav">
+          <div><img src="./HQ.png" alt="">
+            <p>HQ高品质 全员开启</p>
+          </div>
+          <div><img src="./dts.png" alt="">
+            <p>独家音效 全面升级</p>
+          </div>
+          <div><img src="./short.png" alt="">
+            <p>轻盈视觉 动态皮肤</p>
+          </div>
+          <a href="./" class="download">下载体验</a>
+        </i>
+      </li>
+      <li title="开放平台"><a href="./">开放平台</a></li>
+      <li title="VIP"><a href="./">VIP</a></li>
+    </ul>
+    <div class="search_1">
+       <input type="text" placeholder="搜索音乐、MV、歌单、用户" class="search">
+       <div class="search_3">
+          <ul class="clearfix">
+            <a href="" class="clearfix leftfix">
+              <li>1</li>
+              <li>身骑白马</li>
+              <span>770.7万</span>
+            </a>
+          </ul>
+          <ul class="clearfix">
+            <a href="" class="clearfix leftfix">
+              <li>2</li>
+              <li>离别开出花</li>
+              <span>383.4万</span>
+            </a>
+          </ul>
+          <ul class="clearfix">
+            <a href="" class="clearfix leftfix">
+              <li>3</li>
+              <li>无名的人</li>
+              <span>319.8万</span>
+            </a>
+          </ul>
+          <ul class="clearfix">
+            <a href="" class="clearfix leftfix">
+              <li>4</li>
+              <li>鹿晗</li>
+              <span>280.3万</span>
+            </a>
+          </ul>
+          <ul class="clearfix">
+            <a href="" class="clearfix leftfix">
+              <li>5</li>
+              <li>沉溺</li>
+              <span>275.0万</span>
+            </a>
+          </ul>
+          <div class="search_history clearfix">
+            <div class="search_history_left leftfix">历史搜索</div>
+            <a class="search_history_right rightfix">
+              <i></i>
+            </a>
+          </div>
+       </div>
+    </div>
+           <script>
+               const input = document.querySelector(".header .search_1 .search")
+               const search_3 = document.querySelector(".header .search_1 .search_3")
+               input.addEventListener("focus", function () {
+                search_3.style.height = "235px"
+                search_3.style.border = "1px solid #c9c9c9"
+               })
+               input.addEventListener("blur", function () {
+                setTimeout(function () {
+                  search_3.style.height = "0"
+                  search_3.style.border = "0"
+                }, 500)
+               })
+           </script>
+    <button>
+      <i></i>
+    </button>
+    <div class="register"><a href="./">登录</a></div>
+    <div class="openvip"><a href="./">开通VIP</a>
+      <ul class="select-box">
+        <li class="select-item1"><a href="./">开通超级会员</a></li>
+        <li class="select-item2"><a href="./">开通绿钻豪华版</a></li>
+      </ul>
+    </div>
+    <div class="pay"><a href="./">充值</a>
+      <ul class="select-box2">
+        <li class="select-item11"><a href="./">购买乐币</a></li>
+        <li class="select-item12">
+          <a href="./">充值饭票</a>
+          <ul class="select-box3">
+            <li class="select-item111"><a href="">网银支付</a></li>
+            <li class="select-item112"><a href="">开具发票</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="head-nav-middle">
+    <li><a href="">首页</a></li>
+    <li><a href="">歌手</a></li>
+    <li><a href="">新碟</a></li>
+    <li><a href="">排行榜</a></li>
+    <li><a href="">分类歌单</a></li>
+    <li><a href="">电台</a></li>
+    <li><a href="">MV</a></li>
+    <li><a href="">数字专辑</a></li>
+  </div>
+  <div class="container1  clearfix" id="container1">
+    <h2 class="recommend">歌 单 推 荐</h2>
+    <div class="container1_big  clearfix">
+      <ul class="container1-nav clearfix leftfix">
+        <li><a href="">为你推荐</a></li>
+        <li><a href="">经典</a></li>
+        <li><a href="">70年代</a></li>
+        <li><a href="">经典国语</a></li>
+        <li><a href="">官方歌单</a></li>
+        <li><a href="">情歌</a></li>
+      </ul>
+    </div>
+
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+
+    </div>
+
+    <script>
+      for (let i = 0; i <= 4; i++) {
+        const swiper_wrapper = document.querySelector(".swiper-wrapper")
+        const swiper_slide = document.createElement("div")
+        swiper_slide.classList.add("swiper-slide")
+        swiper_slide.innerHTML =
+          `     <div class="photo clearfix">
+      <li><a class="clearfix"><img src="./歌单推荐imag3.webp"  width="224px";  height="224px";alt=""><div class="cover_play"></div></a><p><a>NCT 127 | 三巡官方歌单福利</a></p>播放量:44.2万</li>
+      <li><a class="clearfix"><img src="./歌单推荐imag5.webp" width="224px";  height="224px"; alt=""><div class="cover_play"></div></a><p><a>[粤时光]:热门翻唱集</a></p>播放量:51.9万</li>
+      <li><a class="clearfix"><img src="./歌单推荐imag1.webp" width="224px";  height="224px";alt=""><div class="cover_play"></div></a><p><a>伯远·热血难凉的追梦少年</a></p>播放量:52.0万</li>
+      <li><a class="clearfix"><img src="./歌单推荐imag2.webp" width="224px";  height="224px"; alt=""><div class="cover_play"></div></a><p><a>古风集:酒未入喉，歌声先醉人</a></p>播放量:48.5万</li>
+      <li><a class="clearfix"><img src="./歌单推荐imag4.webp"  width="224px";  height="224px"; alt=""><div class="cover_play"></div></a><p><a>繁花 电视剧原声</a></p>播放量:32.7万</li>
+     </div>`
+        swiper_wrapper.appendChild(swiper_slide)
+      }
+
+    </script>
+    <!-- Swiper JS -->
+    <script src="./swiper-bundle.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        cssMode: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+        },
+        mousewheel: true,
+        keyboard: true,
+      });
+    </script>
+
+
+  </div>
+  <div class="container1 container2 clearfix">
+    <h2 class="recommend">新 歌 首 发</h2>
+    <div class="container1_big  clearfix">
+        <ul class="container1-nav container2-nav clearfix leftfix">
+          <li><a href="">最新</a></li>
+          <li><a href="">内地</a></li>
+          <li><a href="">港台</a></li>
+          <li><a href="">欧美</a></li>
+          <li><a href="">韩国</a></li>
+          <li><a href="">日本</a></li>
+        </ul>
+    </div>
+    <div class="play-all"><a href=""><i></i>播放全部</a></div>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper  swiper-wrapper2">
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+      
+    </div>
+
+    <script>
+      for (let i = 0; i <= 9; i++) {
+        const swiper_wrapper2 = document.querySelector(".swiper-wrapper2")
+        const swiper_slide = document.createElement("div")
+        swiper_slide.classList.add("swiper-slide")
+        swiper_slide.innerHTML =
+          `    <ul class="newsongs-image clearfix">
+        <li class="clearfix leftfix">
+          <a href="" class="clearfix leftfix"><img class="leftfix" src  ="./新歌首发image2.webp" alt="" width="86px" height="86px"><div class="cover_play_2"></div></a>
+          <i class="leftfix"><a>龍</a></i><br>
+          <i class="leftfix singer"><a>GAI周延/雾都L4WUDU王俊凯王源易烊千玺杨幂</a></i>
+          <p class="rightfix">03：05</p>
+        </li>
+        <li class="clearfix leftfix">
+          <a href="" class="clearfix leftfix"><img class="leftfix" src  ="./新歌首发image5.webp" alt="" width="86px" height="86px"><div class="cover_play_2"></div></a>
+          <i class="leftfix"><a>龍</a></i><br>
+          <i class="leftfix singer"><a>GAI 周延/雾都L4WUDU王俊凯王源易烊千玺杨幂</a></i>
+          <p class="rightfix">03：05</p>
+        </li>
+        <li class="clearfix leftfix">
+          <a href="" class="clearfix leftfix"><img class="leftfix" src  ="./新歌首发image4.webp" alt="" width="86px" height="86px"><div class="cover_play_2"></div></a>
+          <i class="leftfix"><a>龍</a></i><br>
+          <i class="leftfix singer"><a>GAI周延/雾都L4WUDU王俊凯王源易烊千玺杨幂</a></i>
+          <p class="rightfix">03：05</p>
+        </li>
+        <li class="clearfix leftfix">
+          <a href="" class="clearfix leftfix"><img class="leftfix" src  ="./新歌首发image3.webp" alt="" width="86px" height="86px"><div class="cover_play_2"></div></a>
+          <i class="leftfix"><a>龍</a></i><br>
+          <i class="leftfix singer"><a>GAI周延/雾都L4WUDU王俊凯王源易烊千玺杨幂</a></i>
+          <p class="rightfix">03：05</p>
+        </li>
+        <li class="clearfix leftfix">
+          <a href="" class="clearfix leftfix"><img class="leftfix" src  ="./新歌首发image1.webp" alt="" width="86px" height="86px"><div class="cover_play_2"></div></a>
+          <i class="leftfix"><a>龍</a></i><br>
+          <i class="leftfix singer"><a>GAI周延/雾都L4WUDU王俊凯王源易烊千玺杨幂</a></i>
+          <p class="rightfix">03：05</p>
+        </li>
+        <li class="clearfix leftfix">
+          <a href="" class="clearfix leftfix"><img class="leftfix" src  ="./新歌首发image9.webp" alt="" width="86px" height="86px"><div class="cover_play_2"></div></a>
+          <i class="leftfix"><a>龍</a></i><br>
+          <i class="leftfix singer"><a>GAI周延/雾都L4WUDU王俊凯王源易烊千玺杨幂</a></i>
+          <p class="rightfix">03：05</p>
+        </li>
+        <li class="clearfix leftfix">
+          <a href="" class="clearfix leftfix"><img class="leftfix" src  ="./新歌首发image8.webp" alt="" width="86px" height="86px"><div class="cover_play_2"></div></a>
+          <i class="leftfix"><a>龍</a></i><br>
+          <i class="leftfix singer"><a>GAI周延/雾都L4WUDU王俊凯王源易烊千玺杨幂</a></i>
+          <p class="rightfix">03：05</p>
+        </li>
+        <li class="clearfix leftfix">
+          <a href="" class="clearfix leftfix"><img class="leftfix" src  ="./新歌首发image7.webp" alt="" width="86px" height="86px"><div class="cover_play_2"></div></a>
+          <i class="leftfix"><a>龍</a></i><br>
+          <i class="leftfix singer"><a>GAI周延/雾都L4WUDU王俊凯王源易烊千玺杨幂</a></i>
+          <p class="rightfix">03：05</p>
+        </li>
+        <li class="clearfix leftfix">
+          <a href="" class="clearfix leftfix"><img class="leftfix" src  ="./新歌首发image6.webp" alt="" width="86px" height="86px"><div class="cover_play_2"></div></a>
+          <i class="leftfix"><a>龍</a></i><br>
+          <i class="leftfix singer"><a>GAI周延/雾都L4WUDU王俊凯王源易烊千玺杨幂</a></i>
+          <p class="rightfix">03：05</p>
+        </li>
+      </ul>`
+        swiper_wrapper2.appendChild(swiper_slide)
+      }
+    </script>
+
+
+    <!-- Swiper JS -->
+    <script src="./swiper-bundle.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        cssMode: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+        },
+        mousewheel: true,
+        keyboard: true,
+      });
+    </script>
+
+
+
+
+
+
+
+  </div>
+  <div class="footer">
+    <div class="container3">
+      <ul class="footer-info clearfix">
+        <li class="download">
+          <div class="download-nav">下载QQ音乐客户端</div>
+          <div class="download-image">
+            <div><a href=""><i></i></a>PC版</div>
+            <div><a href=""><i></i></a>Mac版</div>
+            <div><a href=""><i></i></a>Android版</div>
+            <div><a href=""><i></i></a>iPhone版</div>
+          </div>
+        </li>
+        <li class="product download clearfix">
+          <div class="download-nav">特色产品</div>
+          <div class="download-image">
+            <div><a href=""><i></i></a>全民K歌</div>
+            <div><a href=""><i></i></a>银河音效</div>
+            <div><a href=""><i></i></a>QPlay</div>
+            <div><a href=""><i></i></a>Fan直播伴侣</div>
+          </div>
+          <div class="product-nav2 leftfix"><a href="">车载互联</a></div>
+          <div class="product-nav3 leftfix"><a href="">QQ演出</a></div>
+        </li>
+        <li class="link">
+          <div class="download-nav link-nav">合作链接</div>
+          <div class="slide">
+            <i><a href="">CJ ENM</a></i>
+            <i><a href="">腾讯视频</a></i>
+            <i><a href="">手机QQ空间</a></i>
+            <i><a href="">最新版QQ</a></i>
+            <i><a href="">腾讯社交广告</a></i>
+            <i><a href="">电脑管家</a></i>
+            <i><a href="">QQ浏览器</a></i>
+            <i><a href="">腾讯微云</a></i>
+            <i><a href="">腾讯云</a></i>
+            <i><a href="">企鹅FM</a></i>
+            <i><a href="">智能电视网</a></i>
+            <i><a href="">当贝市场</a></i>
+            <i><a href="">酷我音乐</a></i>
+            <i><a href="">酷狗听书</a></i>
+            <i></i>
+          </div>
+        </li>
+        <li class="platform link">
+          <div class="download-nav link-nav">开放平台</div>
+          <div class="slide">
+            <i><a href="">QQ音乐开放平台</a></i>
+            <i><a href="">腾讯音乐人</a></i>
+            <i><a href="">音乐推-歌曲推广</a></i>
+            <i><a href="">TME聚星-歌曲定制</a></i>
+            <i><a href="">启明星Venus-词曲交易/歌曲推广</a></i>
+            <i><a href="">TME Studio</a></i>
+            <i><a href="">臻品音质认证</a></i>
+            <i></i>
+        </li>
+        <li class="TME">
+          <div class="download-nav TME-nav">TME集团官网</div>
+          <div class="TME-nav-item1"><a href="">腾讯音乐</a></div>
+        </li>
+      </ul>
+      <ul class="footer-deep clearfix">
+        <li><a href="">关于腾讯 </a>|</li>
+        <li><a href="">About Tencent </a>|</li>
+        <li><a href="">服务条款 </a>|</li>
+        <li><a href="">用户服务协议 </a>|</li>
+        <li><a href="">隐私政策 </a>|</li>
+        <li><a href="">权利声明 </a>|</li>
+        <li><a href="">广告服务 </a>|</li>
+        <li><a href="">腾讯招聘 </a>|</li>
+        <li><a href="">客服中心 </a>|</li>
+        <li><a href="">网站导航 </a>|</li>
+        <li><a href="">举报中心</a></li>
+      </ul>
+      <ul class="footer-deep2">Copyright © 1998 - 2024 Tencent. <a href="">All Rights Reserved.</a></ul>
+      <ul class="footer-deep3">
+        <li>腾讯公司 <a href="">版权所有 </a>|</li>
+        <li><a href="">&nbsp;营业执照 </a>|</li>
+        <li>&nbsp;网络文化经营许可证：<a href="">粤网文[2023]2882-203号 </a>|</li>
+        <li>&nbsp;客服电话：<a href="">4006016666 </a>|</li>
+        <li>&nbsp;违法与不良信息举报邮箱：<a href="">tme_musicjubao@tencentmusic.coma</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- 侧边栏固定定位 -->
+  <a href="" class="slide_fixed1"></a>
+  <a href="" class="slide_fixed2">举报</a>
+  <a href="" class="slide_fixed3">反馈</a>
+  <a href="" class="slide_fixed4"></a>
+  <script>
+    const slide_fixed1 = document.querySelector(".slide_fixed1")
+    const container1 = document.querySelector("#container1")
+    window.addEventListener("scroll", function () {
+      console.log(container1.offsetTop);
+      console.log(document.documentElement.scrollTop);
+      if (document.documentElement.scrollTop >= container1.offsetTop) {
+        slide_fixed1.style.display = "block"
+      } else {
+        slide_fixed1.style.display = "none"
+      }
+    })
+    slide_fixed1.addEventListener("click", function (e) {
+      e.preventDefault()
+      document.documentElement.scrollTop = 0
+    })
+  </script>
+  <script>
+    const img = document.querySelectorAll(".container1 .photo li img,.container2 .newsongs-image li img")
+    for (let i = 0; i < img.length; i++) {
+      img[i].addEventListener("mouseover", function () {
+      img[i].style.transform = "scale(1.1)"
+    })
+      img[i].addEventListener("mouseout", function () {
+      img[i].style.transform = "scale(1)"})
+    }
+    const cover_play = document.querySelectorAll(".container1 .photo li .cover_play,.container2 .newsongs-image li .cover_play_2")
+    for (let i = 0; i < cover_play.length; i++) {
+      img[i].addEventListener("mouseenter", function () {
+        cover_play[i].style.transform = "scale(1.5)"
+        cover_play[i].style.opacity = "1"
+      })
+      img[i].addEventListener("mouseleave", function () {
+        cover_play[i].style.transform = "scale(1)"
+        cover_play[i].style.opacity = "0"
+      })
+    }
+
+    const a = document.querySelectorAll(".container1 .photo li>a,.container2 .newsongs-image li>a")
+    for (let i = 0; i < a.length; i++) {
+      a[i].addEventListener("mouseover", function () {
+        img[i].style.transform = "scale(1.1)"
+        cover_play[i].style.transform = "scale(1.5)"
+        cover_play[i].style.opacity = "1"
+      })
+      a[i].addEventListener("mouseleave", function () {
+        img[i].style.transform = "scale(1)"
+        cover_play[i].style.transform = "scale(1)"
+        cover_play[i].style.opacity = "0"
+      })
+    }
+  </script>
+
+</body>
+
+</html>
